@@ -4,31 +4,46 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public GroundMovement gm;
-    private Rigidbody rigidbody;
-    public float speed = 10f;
-    public Renderer groundRenderer;
-    public float scrollSpeed = 0.008f;
+    public GameObject GroundPlane;
+    private Renderer groundRenderer;
+    public float strafeSpeed = 0.5f;
+    public float grassScrollSpeed = 0.008f;
     public Material myMaterial;
-    public Vector2 textureOffset;
+    public Vector2 textureOffset = new Vector2(0, 0);
     public List<FlyingApp> allFlyingApps = new List<FlyingApp>();
     public GameObject FlyingAppPrefab;
+    public float MaxWidth = 9.0f;
 
     // Use this for initialization
     void Start () {
-        rigidbody = GetComponent<Rigidbody>();
-        groundRenderer = gm.GetComponent<Renderer>();
-        textureOffset = new Vector2(speed, 0);
+        groundRenderer = GroundPlane.GetComponent<Renderer>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
 
-        Vector3 movement = new Vector3(horizontalMovement, 0.0f, 0.0f);
-        //renderer.material.shader.off
+    // Update is called once per frame
+    void Update() {
+        //strafing
+        float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * strafeSpeed;
+        
+        //clamp the value
+        if (this.transform.position.x <= -MaxWidth)
+        {
+            horizontalMovement = Mathf.Max(horizontalMovement, 0);
+        }
+        if (this.transform.position.x >= MaxWidth)
+        {
+            horizontalMovement = Mathf.Min(horizontalMovement, 0);
+        }
 
-        textureOffset.y -= scrollSpeed; 
+        //set it 
+        {
+            this.transform.Translate(horizontalMovement, 0, 0);
+        }
+
+
+        //running forward
+        float verticalMovement = Input.GetAxis("Vertical");
+
+        textureOffset.y -= grassScrollSpeed; 
 
         //Shader shader = gm.GetComponent<Shader>();
         myMaterial = groundRenderer.material;
@@ -39,7 +54,7 @@ public class PlayerMovement : MonoBehaviour {
         //Texture myTex = material.mainTexture;
         //myTex.SetTextureOffset("_MainTex",textureOffset);
 
-        rigidbody.AddForce(movement * speed);
+        //rigidbody.AddForce(movement * speed);
 
     }
 
