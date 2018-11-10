@@ -2,42 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public partial class PlayerMovement : MonoBehaviour {
 
-    public GroundMovement gm;
-    private Rigidbody rigidbody;
-    public float speed = 10f;
-    public Renderer groundRenderer;
-    public float scrollSpeed = 0.008f;
+    public GameObject GroundPlane;
+    private Renderer groundRenderer;
+    public float strafeSpeed = 10.0f;
+    public float grassScrollSpeed = 0.008f;
     public Material myMaterial;
-    public Vector2 textureOffset;
+    public Vector2 textureOffset = new Vector2(0, 0);
+    public List<FlyingApp> allFlyingApps = new List<FlyingApp>();
+    public GameObject FlyingAppPrefab;
+    public float MaxStrafeWidth = 9.0f;
+    public float MaxStrafeWidthNormal = 9.0f;
+    public float MaxStrafeWidthDestination = 4.0f;
+    public float DistanceTravelled = 0.0f;
+    public float PlayerRunRate = 1.0f;
+    public float PlayerRunRateMax = 2.0f;
+    public float PlayerRunRateMin = 0.5f;
+    public bool AtDestination = false;
 
     // Use this for initialization
-    void Start () {
-        rigidbody = GetComponent<Rigidbody>();
-        groundRenderer = gm.GetComponent<Renderer>();
-        textureOffset = new Vector2(speed, 0);
+    void Start ()
+    {
+        groundRenderer = GroundPlane.GetComponent<Renderer>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
 
-        Vector3 movement = new Vector3(horizontalMovement, 0.0f, 0.0f);
-        //renderer.material.shader.off
+    // Update is called once per frame
+    void Update()
+    {
+        //strafing
+        float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * strafeSpeed;
+        Debug.Log("horizontalMovement: " + horizontalMovement);
 
-        textureOffset.y -= scrollSpeed; 
+        //clamp the value
+        if (this.transform.position.x <= -MaxStrafeWidth)
+        {
+            horizontalMovement = Mathf.Max(horizontalMovement, 0);
+        }
+        if (this.transform.position.x >= MaxStrafeWidth)
+        {
+            horizontalMovement = Mathf.Min(horizontalMovement, 0);
+        }
 
-        //Shader shader = gm.GetComponent<Shader>();
-        myMaterial = groundRenderer.material;
-        myMaterial.SetTextureOffset("_MainTex", textureOffset);
+        //set it
+        this.transform.Translate(horizontalMovement, 0, 0);
 
-        //Debug.Log("test");
-
-        //Texture myTex = material.mainTexture;
-        //myTex.SetTextureOffset("_MainTex",textureOffset);
-
-        rigidbody.AddForce(movement * speed);
-
+        //running forward
+        if (AtDestination)
+        {
+            if(Input.GetAxis("Vertical") > 0)
+            {
+                LeaveDestination();
+            }
+        }
+        else
+        {
+            textureOffset.y -= grassScrollSpeed * PlayerRunRate;
+            myMaterial = groundRenderer.material;
+            myMaterial.SetTextureOffset("_MainTex", textureOffset);
+        }
+        
+        //track distance travelled
+        DistanceTravelled += PlayerRunRate * Time.deltaTime;
     }
 }
