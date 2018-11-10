@@ -11,8 +11,6 @@ public class PlayerMovement : MonoBehaviour {
     public float scrollSpeed = 0.008f;
     public Material myMaterial;
     public Vector2 textureOffset;
-    public List<FlyingApp> allFlyingApps = new List<FlyingApp>();
-    public GameObject FlyingAppPrefab;
 
     // Use this for initialization
     void Start () {
@@ -42,11 +40,4 @@ public class PlayerMovement : MonoBehaviour {
         rigidbody.AddForce(movement * speed);
 
     }
-
-    void CreateApp()
-    {
-        Instantiate(FlyingAppPrefab);
-    }
-
-
 }
