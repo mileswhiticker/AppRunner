@@ -32,7 +32,7 @@ public partial class PlayerMovement : MonoBehaviour {
     {
         //strafing
         float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * strafeSpeed;
-        Debug.Log("horizontalMovement: " + horizontalMovement);
+        //Debug.Log("horizontalMovement: " + horizontalMovement);
 
         //clamp the value
         if (this.transform.position.x <= -MaxStrafeWidth)
@@ -64,6 +64,26 @@ public partial class PlayerMovement : MonoBehaviour {
         
         //track distance travelled
         DistanceTravelled += PlayerRunRate * Time.deltaTime;
+
+        if (Input.GetAxis("Vertical") > 0) {
+            if (PlayerRunRate >= 2.0f) {
+                PlayerRunRate = 2.0f;
+            }
+            PlayerRunRate += 0.2f;
+            Debug.Log("Increasing: " + PlayerRunRate);
+        }
+        else if (Input.GetAxis("Vertical") < 0) {
+            if (PlayerRunRate <= 0.5f) {
+                PlayerRunRate = 0.5f;
+            }
+            PlayerRunRate -= 0.2f;
+            Debug.Log("Decreasing: " + PlayerRunRate);
+        }
+        else {
+            PlayerRunRate = 1.0f;
+        }
+
+
     }
 
     void CreateApp()
