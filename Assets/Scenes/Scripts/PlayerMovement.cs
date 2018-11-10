@@ -65,23 +65,42 @@ public partial class PlayerMovement : MonoBehaviour {
         //track distance travelled
         DistanceTravelled += PlayerRunRate * Time.deltaTime;
 
-        if (Input.GetAxis("Vertical") > 0) {
-            if (PlayerRunRate >= 2.0f) {
-                PlayerRunRate = 2.0f;
-            }
-            PlayerRunRate += 0.2f;
-            Debug.Log("Increasing: " + PlayerRunRate);
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+                PlayerRunRate += 0.2f;
+                if (PlayerRunRate >= 2.0f) {
+                    PlayerRunRate = 2.0f;
+                }
+
+                Debug.Log("Increasing: " + PlayerRunRate);    
         }
-        else if (Input.GetAxis("Vertical") < 0) {
-            if (PlayerRunRate <= 0.5f) {
-                PlayerRunRate = 0.5f;
-            }
-            PlayerRunRate -= 0.2f;
-            Debug.Log("Decreasing: " + PlayerRunRate);
+        else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+                PlayerRunRate -= 0.2f;
+                if (PlayerRunRate <= 0.5f) {
+                    PlayerRunRate = 0.5f;
+                }
+
+                Debug.Log("Decreasing: " + PlayerRunRate);
         }
-        else {
-            PlayerRunRate = 1.0f;
-        }
+
+        //if (Input.GetAxis("Vertical") > 0) {
+        //    PlayerRunRate += 0.2f;
+        //    if (PlayerRunRate >= 2.0f) {
+        //        PlayerRunRate = 2.0f;
+        //    }
+
+        //    Debug.Log("Increasing: " + PlayerRunRate);
+        //}
+        //else if (Input.GetAxis("Vertical") < 0) {
+        //    PlayerRunRate -= 0.2f;
+        //    if (PlayerRunRate <= 0.5f) {
+        //        PlayerRunRate = 0.5f;
+        //    }
+
+        //    Debug.Log("Decreasing: " + PlayerRunRate);
+        //}
+        //else {
+        //    PlayerRunRate = 1.0f;
+        //}
 
 
     }
