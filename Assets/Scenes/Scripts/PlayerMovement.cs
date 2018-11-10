@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 movement = new Vector3(horizontalMovement, 0.0f, 0.0f);
         //renderer.material.shader.off
 
-        textureOffset.x += scrollSpeed; 
+        textureOffset.y -= scrollSpeed; 
 
         //Shader shader = gm.GetComponent<Shader>();
         myMaterial = groundRenderer.material;
