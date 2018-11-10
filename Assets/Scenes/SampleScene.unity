@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4507944, g: 0.4989859, b: 0.56539917, a: 1}
+  m_IndirectSpecularColor: {r: 0.4507947, g: 0.49898595, b: 0.56539935, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -206,9 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a855fc36c8f4bcc499c5a29412e95e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerGameObject: {fileID: 2082616030}
-  DistanceBetweenDestinations: 15
-  DistanceAtLastDestination: 0
 --- !u!4 &264061613
 Transform:
   m_ObjectHideFlags: 0
