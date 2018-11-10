@@ -13,14 +13,18 @@ public class PlayerMovement : MonoBehaviour {
     public List<FlyingApp> allFlyingApps = new List<FlyingApp>();
     public GameObject FlyingAppPrefab;
     public float MaxWidth = 9.0f;
+    public float DistanceTravelled = 0.0f;
+    public float PlayerRunRate = 1.0f;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         groundRenderer = GroundPlane.GetComponent<Renderer>();
 	}
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         //strafing
         float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * strafeSpeed;
         
@@ -38,23 +42,13 @@ public class PlayerMovement : MonoBehaviour {
         {
             this.transform.Translate(horizontalMovement, 0, 0);
         }
-
-
+        
         //running forward
-        float verticalMovement = Input.GetAxis("Vertical");
-
-        textureOffset.y -= grassScrollSpeed; 
-
-        //Shader shader = gm.GetComponent<Shader>();
+        textureOffset.y -= grassScrollSpeed * PlayerRunRate;
         myMaterial = groundRenderer.material;
         myMaterial.SetTextureOffset("_MainTex", textureOffset);
-
-        //Debug.Log("test");
-
-        //Texture myTex = material.mainTexture;
-        //myTex.SetTextureOffset("_MainTex",textureOffset);
-
-        //rigidbody.AddForce(movement * speed);
+        
+        DistanceTravelled += PlayerRunRate * Time.deltaTime;
 
     }
 
@@ -62,6 +56,4 @@ public class PlayerMovement : MonoBehaviour {
     {
         Instantiate(FlyingAppPrefab);
     }
-
-
 }
