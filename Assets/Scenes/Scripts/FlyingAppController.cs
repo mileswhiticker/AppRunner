@@ -14,27 +14,27 @@ public class FlyingAppController : MonoBehaviour {
 	public SpriteRenderer spriteRenderer;
 	public Sprite app1, app2;
 	
-	public List<String> apps = [
-		"AppAirbnb",
-		"AppAirbnb2",
-		"AppAirtasker",
-		"AppAirtasker2",
-		"AppAmazon",
-		"AppCandycrush",
-		"AppEbay",
-		"AppFacebook",
-		"AppFiverr",
-		"AppFiverr2",
-		"AppGithub",
-		"AppGoogledocs",
-		"AppInstagram",
-		"AppMeditation",
-		"AppMicrosoft",
-		"AppMinecraft"
-	];
+	public List<string> apps = new List<string>();
 
 	// Use this for initialization
 	void Start () {
+		apps.Add("AppAirbnb");
+		apps.Add("AppAirbnb2");
+		apps.Add("AppAirtasker");
+		apps.Add("AppAirtasker2");
+		apps.Add("AppAmazon");
+		apps.Add("AppCandycrush");
+		apps.Add("AppEbay");
+		apps.Add("AppFacebook");
+		apps.Add("AppFiverr");
+		apps.Add("AppFiverr2");
+		apps.Add("AppGithub");
+		apps.Add("AppGoogledocs");
+		apps.Add("AppInstagram");
+		apps.Add("AppMeditation");
+		apps.Add("AppMicrosoft");
+		apps.Add("AppMinecraft");
+		
 		pm = player.GetComponent<PlayerMovement>();
 		// Launch an app 1 seconds after starting, then every 3 seconds after that
 		InvokeRepeating("CreateApp", 1.0f, 3.0f);
