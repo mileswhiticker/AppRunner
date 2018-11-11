@@ -5,11 +5,12 @@ using UnityEngine;
 public partial class PlayerMovement : MonoBehaviour
 {
     public int metaDataLost = 0;
+    public GameObject gman;
     public void ReachDestination(GameObject otherGameObject, Destination otherDestination)
     {
         AtDestination = true;
         MaxStrafeWidth = MaxStrafeWidthDestination;
-        PlayerRunRate = 0;
+        //PlayerRunRate = 0;
         this.transform.position = new Vector3(otherGameObject.transform.position.x, this.transform.position.y, otherGameObject.transform.position.z);
 
         MoneyAmount += otherDestination.MoneyEffect;
@@ -38,6 +39,7 @@ public partial class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider otherCollider)
     {
+        //Debug.Log("OnTriggerEnter()");
         GameObject otherGameObject = otherCollider.gameObject;
         Destination otherDestination = otherGameObject.GetComponent<Destination>();
         FlyingApp otherFlyingApp = otherGameObject.GetComponent<FlyingApp>();
@@ -53,6 +55,7 @@ public partial class PlayerMovement : MonoBehaviour
         }
         else if (otherFlyingApp)
         {
+            //Debug.Log("otherFlyingApp");
             MoneyAmount += otherFlyingApp.MoneyEffect;
             //
             SocialAmount += otherFlyingApp.SocialEffect;
@@ -64,6 +67,11 @@ public partial class PlayerMovement : MonoBehaviour
             if (otherFlyingApp.LeakYourData)
             {
                 metaDataLost += 1;
+                Vector3 newScale = gman.transform.localScale;
+                newScale.x += 1;
+                newScale.y += 1;
+                gman.transform.localScale = newScale;
+                gman.transform.Translate(0, 0.5f, 0);
             }
 
             otherGameObject.SetActive(false);

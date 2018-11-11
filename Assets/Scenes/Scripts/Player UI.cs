@@ -13,6 +13,8 @@ public partial class PlayerMovement : MonoBehaviour
     //
     public Image moneyBar;
 
+    public Text gameOverText;
+
     public void UpdateUI()
     {
         //
@@ -42,5 +44,12 @@ public partial class PlayerMovement : MonoBehaviour
         //
         moneyBar.rectTransform.height = SleepAmount;
         */
+    }
+
+    public void GameOver(string gameOverMessage)
+    {
+        gameOverText.enabled = true;
+        gameOverText.text = gameOverMessage;
+        GameRunning = false;
     }
 }

@@ -14,7 +14,7 @@ public partial class PlayerMovement : MonoBehaviour
     public GameObject FlyingAppPrefab;
     public float MaxStrafeWidth = 9.0f;
     public float MaxStrafeWidthNormal = 9.0f;
-    public float MaxStrafeWidthDestination = 4.0f;
+    public float MaxStrafeWidthDestination = 3.0f;
     public float DistanceTravelled = 0.0f;
     public float PlayerRunRate = 1.0f;
     public float PlayerRunRateMax = 2.0f;
@@ -31,11 +31,13 @@ public partial class PlayerMovement : MonoBehaviour
     public float SleepAmount = 40.0f;
 
     //money does not decay
-    public float SocialDecay = 0.5f;
-    public float HappinessDecay = 1.0f;
+    public float SocialDecay = 1.0f;
+    public float HappinessDecay = 2.0f;
     //
-    public float HealthDecay = 0.5f;
+    public float HealthDecay = 1.0f;
     public float SleepDecay = 1.0f;
+
+    public bool GameRunning = true;
     
     // Use this for initialization
     void Start ()
@@ -48,92 +50,112 @@ public partial class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //strafing
-        float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * strafeSpeed;
-        // Debug.Log("horizontalMovement: " + horizontalMovement);
-        //clamp the value
-        if (this.transform.position.x <= -MaxStrafeWidth)
+        if (GameRunning)
         {
-            horizontalMovement = Mathf.Max(horizontalMovement, 0);
-        }
-        if (this.transform.position.x >= MaxStrafeWidth)
-        {
-            horizontalMovement = Mathf.Min(horizontalMovement, 0);
-        }
-
-        //set it
-        this.transform.Translate(-horizontalMovement, 0, 0);
-        
-        //Leave a destination
-        float vertAxis = Input.GetAxis("Vertical");
-        if (AtDestination)
-        {
-            if(vertAxis > 0)
+            //strafing
+            float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * strafeSpeed;
+            // Debug.Log("horizontalMovement: " + horizontalMovement);
+            //clamp the value
+            if (this.transform.position.x <= -MaxStrafeWidth)
             {
-                Debug.Log("LeaveDestination()");
-                LeaveDestination();
+                horizontalMovement = Mathf.Max(horizontalMovement, 0);
             }
-        }
-        else
-        {
-            textureOffset.y -= grassScrollSpeed * PlayerRunRate;
-            myMaterial = groundRenderer.material;
-            myMaterial.SetTextureOffset("_MainTex", textureOffset);
-        }
-        
-        //track distance travelled
-        DistanceTravelled += PlayerRunRate * Time.deltaTime;
-
-        // Increase of Decrease Speed
-        if (vertAxis != 0) {
-            PlayerRunRate += vertAxis * Time.deltaTime;
-            if (PlayerRunRate >= 2.0f) {
-                PlayerRunRate = 2.0f;
+            if (this.transform.position.x >= MaxStrafeWidth)
+            {
+                horizontalMovement = Mathf.Min(horizontalMovement, 0);
             }
 
-            //// TODO clamp position
-            //float PositionZ = this.transform.position.z * Time.deltaTime;
-            //PositionZ += 0.2f;
-             
-            ////if (this.transform.position.z <= -6.0f) {
-            ////    Mathf.Clamp(PositionZ, -4.0f, -6.0f);
-            ////}             
+            //set it
+            this.transform.Translate(-horizontalMovement, 0, 0);
 
-            //this.transform.Translate(0.0f, 0.0f, PositionZ);
-
-            //Debug.Log("Increasing: " + PlayerRunRate);
-            //Debug.Log("PositionZ" + PositionZ);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            PlayerRunRate -= 0.2f;
-            if (PlayerRunRate <= 0.5f) {
-                PlayerRunRate = 0.5f;
+            //Leave a destination
+            float vertAxis = Input.GetAxis("Vertical");
+            if (AtDestination)
+            {
+                if (vertAxis > 0)
+                {
+                    //Debug.Log("LeaveDestination()");
+                    LeaveDestination();
+                }
+            }
+            else
+            {
+                textureOffset.y -= grassScrollSpeed * PlayerRunRate;
+                myMaterial = groundRenderer.material;
+                myMaterial.SetTextureOffset("_MainTex", textureOffset);
             }
 
-            //// TODO clamp position
-            //float PositionZ = this.transform.position.z;
-            //PositionZ -= 0.2f;
+            //track distance travelled
+            DistanceTravelled += PlayerRunRate * Time.deltaTime;
 
-            //this.transform.Translate(0.0f, 0.0f, PositionZ);
+            // Increase of Decrease Speed
+            if (vertAxis != 0)
+            {
+                PlayerRunRate += vertAxis * Time.deltaTime;
+                if (PlayerRunRate >= 2.0f)
+                {
+                    PlayerRunRate = 2.0f;
+                }
 
-            //Debug.Log("Decreasing: " + PlayerRunRate);
-            //Debug.Log("PositionZ" + PositionZ);
+                //// TODO clamp position
+                //float PositionZ = this.transform.position.z * Time.deltaTime;
+                //PositionZ += 0.2f;
+
+                ////if (this.transform.position.z <= -6.0f) {
+                ////    Mathf.Clamp(PositionZ, -4.0f, -6.0f);
+                ////}             
+
+                //this.transform.Translate(0.0f, 0.0f, PositionZ);
+
+                //Debug.Log("Increasing: " + PlayerRunRate);
+                //Debug.Log("PositionZ" + PositionZ);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                PlayerRunRate -= 0.2f;
+                if (PlayerRunRate <= 0.5f)
+                {
+                    PlayerRunRate = 0.5f;
+                }
+
+                //// TODO clamp position
+                //float PositionZ = this.transform.position.z;
+                //PositionZ -= 0.2f;
+
+                //this.transform.Translate(0.0f, 0.0f, PositionZ);
+
+                //Debug.Log("Decreasing: " + PlayerRunRate);
+                //Debug.Log("PositionZ" + PositionZ);
+            }
+
+            //cooldown from leaving a destination so extra collisions dont trigger
+            if (timeLeftDestinationCooldown > 0)
+            {
+                timeLeftDestinationCooldown -= Time.deltaTime;
+            }
+
+
+            SocialAmount -= SocialDecay * Time.deltaTime;
+            HappinessAmount -= HappinessDecay * Time.deltaTime;
+            //MoneyAmount -= decayRate * Time.deltaTime;
+            HealthAmount -= HealthDecay * Time.deltaTime;
+            SleepAmount -= SleepDecay * Time.deltaTime;
+
+            //
+            UpdateUI();
+
+            if (SocialAmount + HappinessAmount <= 0)
+            {
+                GameOver("GAME OVER! Unhappy & no social life.");
+            }
+            else if (HealthAmount + SleepAmount <= 0)
+            {
+                GameOver("GAME OVER! Unhealthy & no sleep.");
+            }
+            else if (MoneyAmount <= 0)
+            {
+                GameOver("GAME OVER! No money.");
+            }
         }
-
-        //cooldown from leaving a destination so extra collisions dont trigger
-        if (timeLeftDestinationCooldown > 0)
-        {
-            timeLeftDestinationCooldown -= Time.deltaTime;
-        }
-
-
-        SocialAmount -= SocialDecay * Time.deltaTime;
-        HappinessAmount -= HappinessDecay * Time.deltaTime;
-        //MoneyAmount -= decayRate * Time.deltaTime;
-        HealthAmount -= HealthDecay * Time.deltaTime;
-        SleepAmount -= SleepDecay * Time.deltaTime;
-        
-        //
-        UpdateUI();
     }
 }

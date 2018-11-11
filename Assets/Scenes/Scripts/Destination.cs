@@ -26,7 +26,8 @@ public class Destination : MonoBehaviour
 
         if(this.transform.position.z < -1)
         {
-            this.transform.Translate(0.0f, 0, 65.0f);
+            this.transform.Translate(-4.0f + Random.value * 8.0f, 0, 65.0f);
+            //this.transform.Translate(-3.0f + Random.value * 6.0f, 0.0f, 0.0f);
         }
     }
 }

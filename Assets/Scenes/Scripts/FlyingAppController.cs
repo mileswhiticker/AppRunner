@@ -40,7 +40,7 @@ public class FlyingAppController : MonoBehaviour {
 		pm = player.GetComponent<PlayerMovement>();
         AppFlySpeed = pm.PlayerRunRate;
         // Launch an app 1 seconds after starting, then every 3 seconds after that
-        InvokeRepeating("CreateApp", 1.0f, 3.0f);
+        InvokeRepeating("CreateApp", 1.0f, 2.0f);
         apps.Add("AppAirbnb");
         apps.Add("AppAirbnb2");
         apps.Add("AppAmazon");
