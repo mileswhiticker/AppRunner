@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 264061613}
   - component: {fileID: 264061612}
   m_Layer: 0
-  m_Name: DestinationController
+  m_Name: Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,6 +209,9 @@ MonoBehaviour:
   PlayerGameObject: {fileID: 2082616030}
   DistanceBetweenDestinations: 15
   DistanceAtLastDestination: 0
+  DestinationHome: {fileID: 0}
+  DestinationWork: {fileID: 0}
+  DestinationSocial: {fileID: 0}
 --- !u!4 &264061613
 Transform:
   m_ObjectHideFlags: 0
@@ -309,6 +312,8 @@ GameObject:
   - component: {fileID: 563404588}
   - component: {fileID: 563404587}
   - component: {fileID: 563404586}
+  - component: {fileID: 563404589}
+  - component: {fileID: 563404590}
   - component: {fileID: 563404585}
   m_Layer: 0
   m_Name: Work
@@ -317,19 +322,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &563404585
-CapsuleCollider:
+--- !u!135 &563404585
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 563404584}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &563404586
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -379,12 +383,39 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 563404584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 0, z: -9.55}
+  m_LocalPosition: {x: 0.16, y: 0.84, z: 8.41}
   m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &563404589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563404584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04377a299cc039e478ec35565a44ae9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerGameObject: {fileID: 2082616030}
+--- !u!54 &563404590
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563404584}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1676735172
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +426,8 @@ GameObject:
   - component: {fileID: 1676735176}
   - component: {fileID: 1676735175}
   - component: {fileID: 1676735174}
+  - component: {fileID: 1676735177}
+  - component: {fileID: 1676735178}
   - component: {fileID: 1676735173}
   m_Layer: 0
   m_Name: Home
@@ -403,19 +436,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &1676735173
-CapsuleCollider:
+--- !u!135 &1676735173
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1676735172}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1676735174
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -465,12 +497,39 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1676735172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.42, y: 0, z: -9.55}
+  m_LocalPosition: {x: 5.42, y: 0.84, z: 9.09}
   m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1676735177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1676735172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04377a299cc039e478ec35565a44ae9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerGameObject: {fileID: 2082616030}
+--- !u!54 &1676735178
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1676735172}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1804495485
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +627,9 @@ GameObject:
   - component: {fileID: 1927308508}
   - component: {fileID: 1927308507}
   - component: {fileID: 1927308506}
-  - component: {fileID: 1927308505}
+  - component: {fileID: 1927308509}
+  - component: {fileID: 1927308511}
+  - component: {fileID: 1927308510}
   m_Layer: 0
   m_Name: Social
   m_TagString: Untagged
@@ -576,19 +637,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &1927308505
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1927308504}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1927308506
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -638,12 +686,51 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1927308504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.54, y: 0, z: -9.55}
+  m_LocalPosition: {x: -6.54, y: 0.84, z: 8.74}
   m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927308509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927308504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04377a299cc039e478ec35565a44ae9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerGameObject: {fileID: 2082616030}
+--- !u!54 &1927308510
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927308504}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &1927308511
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927308504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2082616030
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +743,7 @@ GameObject:
   - component: {fileID: 2082616033}
   - component: {fileID: 2082616032}
   - component: {fileID: 2082616036}
+  - component: {fileID: 2082616031}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -663,6 +751,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &2082616031
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2082616030}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &2082616032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -670,7 +773,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2082616030}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -757,3 +860,4 @@ MonoBehaviour:
   PlayerRunRateMax: 2
   PlayerRunRateMin: 0.5
   AtDestination: 0
+  timeLeftDestinationCooldown: 0

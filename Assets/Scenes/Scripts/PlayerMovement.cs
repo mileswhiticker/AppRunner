@@ -20,6 +20,7 @@ public partial class PlayerMovement : MonoBehaviour {
     public float PlayerRunRateMax = 2.0f;
     public float PlayerRunRateMin = 0.5f;
     public bool AtDestination = false;
+    public float timeLeftDestinationCooldown = 0.0f;
 
     // Use this for initialization
     void Start ()
@@ -32,7 +33,6 @@ public partial class PlayerMovement : MonoBehaviour {
     {
         //strafing
         float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * strafeSpeed;
-        Debug.Log("horizontalMovement: " + horizontalMovement);
 
         //clamp the value
         if (this.transform.position.x <= -MaxStrafeWidth)
@@ -52,6 +52,7 @@ public partial class PlayerMovement : MonoBehaviour {
         {
             if(Input.GetAxis("Vertical") > 0)
             {
+                Debug.Log("LeaveDestination()");
                 LeaveDestination();
             }
         }
@@ -64,6 +65,12 @@ public partial class PlayerMovement : MonoBehaviour {
         
         //track distance travelled
         DistanceTravelled += PlayerRunRate * Time.deltaTime;
+
+        //cooldown from leaving a destination so extra collisions dont trigger
+        if (timeLeftDestinationCooldown > 0)
+        {
+            timeLeftDestinationCooldown -= Time.deltaTime;
+        }
     }
 
     void CreateApp()
