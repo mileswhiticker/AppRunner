@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Destination : MonoBehaviour
 {
+    public float SleepEffect = 0.0f;
+    public float HealthEffect = 0.0f;
+    public float SocialEffect = 0.0f;
+    public float HappyEffect = 0.0f;
+    public float MoneyEffect = 0.0f;
+
     public GameObject PlayerGameObject;
     private PlayerMovement PlayerMovementScript;
 

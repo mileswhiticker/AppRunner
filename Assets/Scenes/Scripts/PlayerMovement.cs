@@ -41,7 +41,9 @@ public partial class PlayerMovement : MonoBehaviour
     void Start ()
     {
         groundRenderer = GroundPlane.GetComponent<Renderer>();
-	}
+
+        GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Sprites/Strava");
+    }
 
     // Update is called once per frame
     void Update()
@@ -123,7 +125,7 @@ public partial class PlayerMovement : MonoBehaviour
             timeLeftDestinationCooldown -= Time.deltaTime;
         }
 
-		//some stats decay over time
+
         SocialAmount -= SocialDecay * Time.deltaTime;
         HappinessAmount -= HappinessDecay * Time.deltaTime;
         //MoneyAmount -= decayRate * Time.deltaTime;

@@ -43,7 +43,9 @@ public class FlyingAppController : MonoBehaviour {
     {
 		flyingApp = Instantiate(Resources.Load("flyingAppPrefab")) as GameObject;
 		flyingApp.transform.position = new Vector3(Random.Range(-9.0f, 9.0f), 0.85f, 7f);
-		flyingApps.Add(flyingApp);
+        flyingApp.GetComponent<Renderer>().materials[0].SetTexture("_MainText", Resources.Load<Texture>("Sprites/testtexture"));
+
+        flyingApps.Add(flyingApp);
     }
 	
 	// void function WaitAndDestroy() {
