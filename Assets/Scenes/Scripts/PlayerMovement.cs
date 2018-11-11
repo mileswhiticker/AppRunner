@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class PlayerMovement : MonoBehaviour {
-
+public partial class PlayerMovement : MonoBehaviour
+{
     public GameObject GroundPlane;
     private Renderer groundRenderer;
     public float strafeSpeed = 10.0f;
@@ -22,6 +22,21 @@ public partial class PlayerMovement : MonoBehaviour {
     public bool AtDestination = false;
     public float timeLeftDestinationCooldown = 0.0f;
 
+    public float MoneyAmount = 80.0f;
+    //
+    public float SocialAmount = 40.0f;
+    public float HappinessAmount = 40.0f;
+    //
+    public float HealthAmount = 40.0f;
+    public float SleepAmount = 40.0f;
+
+    //money does not decay
+    public float SocialDecay = 0.5f;
+    public float HappinessDecay = 1.0f;
+    //
+    public float HealthDecay = 0.5f;
+    public float SleepDecay = 1.0f;
+    
     // Use this for initialization
     void Start ()
     {
@@ -107,5 +122,15 @@ public partial class PlayerMovement : MonoBehaviour {
         {
             timeLeftDestinationCooldown -= Time.deltaTime;
         }
+
+		//some stats decay over time
+        SocialAmount -= SocialDecay * Time.deltaTime;
+        HappinessAmount -= HappinessDecay * Time.deltaTime;
+        //MoneyAmount -= decayRate * Time.deltaTime;
+        HealthAmount -= HealthDecay * Time.deltaTime;
+        SleepAmount -= SleepDecay * Time.deltaTime;
+        
+        //
+        UpdateUI();
     }
 }
