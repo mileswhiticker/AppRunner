@@ -33,7 +33,7 @@ public partial class PlayerMovement : MonoBehaviour {
     {
         //strafing
         float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * strafeSpeed;
-        Debug.Log("horizontalMovement: " + horizontalMovement);
+        // Debug.Log("horizontalMovement: " + horizontalMovement);
         //clamp the value
         if (this.transform.position.x <= -MaxStrafeWidth)
         {
@@ -107,10 +107,5 @@ public partial class PlayerMovement : MonoBehaviour {
         {
             timeLeftDestinationCooldown -= Time.deltaTime;
         }
-    }
-
-    void CreateApp()
-    {
-        Instantiate(FlyingAppPrefab);
     }
 }
