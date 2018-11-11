@@ -8,11 +8,12 @@ public partial class PlayerMovement : MonoBehaviour
     public GameObject gman;
     public void ReachDestination(GameObject otherGameObject, Destination otherDestination)
     {
+        /*
         AtDestination = true;
         MaxStrafeWidth = MaxStrafeWidthDestination;
         //PlayerRunRate = 0;
         this.transform.position = new Vector3(otherGameObject.transform.position.x, this.transform.position.y, otherGameObject.transform.position.z);
-
+        */
         MoneyAmount += otherDestination.MoneyEffect;
         //
         SocialAmount += otherDestination.SocialEffect;
@@ -33,7 +34,7 @@ public partial class PlayerMovement : MonoBehaviour
     {
         AtDestination = false;
         MaxStrafeWidth = MaxStrafeWidthNormal;
-        PlayerRunRate = PlayerRunRateMin;
+        PlayerRunRate = PlayerRunRateMax;
         timeLeftDestinationCooldown = 5.0f;
     }
 
@@ -72,6 +73,10 @@ public partial class PlayerMovement : MonoBehaviour
                 newScale.y += 1;
                 gman.transform.localScale = newScale;
                 gman.transform.Translate(0, 0.5f, 0);
+                if (metaDataLost >= 100)
+                {
+                    GameOver("GOV GOT YOUR DATA.");
+                }
             }
 
             otherGameObject.SetActive(false);

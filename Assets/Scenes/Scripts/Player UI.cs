@@ -13,7 +13,8 @@ public partial class PlayerMovement : MonoBehaviour
     //
     public Image moneyBar;
 
-    public Text gameOverText;
+    public Text gameOverTextOne;
+    public Text gameOverTextTwo;
 
     public void UpdateUI()
     {
@@ -48,8 +49,8 @@ public partial class PlayerMovement : MonoBehaviour
 
     public void GameOver(string gameOverMessage)
     {
-        gameOverText.enabled = true;
-        gameOverText.text = gameOverMessage;
+        gameOverTextOne.text = "GAME OVER";
+        gameOverTextTwo.text = gameOverMessage;
         GameRunning = false;
     }
 }

@@ -146,15 +146,15 @@ public partial class PlayerMovement : MonoBehaviour
 
             if (SocialAmount + HappinessAmount <= 0)
             {
-                GameOver("GAME OVER! Unhappy & no social life.");
+                GameOver("You are unhappy & have no social life.");
             }
             else if (HealthAmount + SleepAmount <= 0)
             {
-                GameOver("GAME OVER! Unhealthy & no sleep.");
+                GameOver("You are unhealthy & have no sleep.");
             }
             else if (MoneyAmount <= 0)
             {
-                GameOver("GAME OVER! No money.");
+                GameOver("You have no money.");
             }
         }
     }

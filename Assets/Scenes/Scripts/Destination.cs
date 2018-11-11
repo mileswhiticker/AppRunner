@@ -22,12 +22,15 @@ public class Destination : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        this.transform.Translate(0, 0, -PlayerMovementScript.PlayerRunRate * Time.deltaTime);
-
-        if(this.transform.position.z < -1)
+        if (PlayerMovementScript.GameRunning)
         {
-            this.transform.Translate(-4.0f + Random.value * 8.0f, 0, 65.0f);
-            //this.transform.Translate(-3.0f + Random.value * 6.0f, 0.0f, 0.0f);
+            this.transform.Translate(0, 0, -PlayerMovementScript.PlayerRunRate * Time.deltaTime);
+
+            if (this.transform.position.z < -1)
+            {
+                this.transform.Translate(-4.0f + Random.value * 8.0f, 0, 65.0f);
+                //this.transform.Translate(-3.0f + Random.value * 6.0f, 0.0f, 0.0f);
+            }
         }
     }
 }
