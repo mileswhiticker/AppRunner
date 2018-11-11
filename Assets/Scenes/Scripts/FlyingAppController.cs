@@ -13,6 +13,25 @@ public class FlyingAppController : MonoBehaviour {
 	
 	public SpriteRenderer spriteRenderer;
 	public Sprite app1, app2;
+	
+	public List<String> apps = [
+		"AppAirbnb",
+		"AppAirbnb2",
+		"AppAirtasker",
+		"AppAirtasker2",
+		"AppAmazon",
+		"AppCandycrush",
+		"AppEbay",
+		"AppFacebook",
+		"AppFiverr",
+		"AppFiverr2",
+		"AppGithub",
+		"AppGoogledocs",
+		"AppInstagram",
+		"AppMeditation",
+		"AppMicrosoft",
+		"AppMinecraft"
+	];
 
 	// Use this for initialization
 	void Start () {
@@ -45,25 +64,6 @@ public class FlyingAppController : MonoBehaviour {
 	// Spawn a new flying app and add it to the list
 	void CreateApp()
     {
-		List<String> apps = [
-			"AppAirbnb",
-			"AppAirbnb2",
-			"AppAirtasker",
-			"AppAirtasker2",
-			"AppAmazon",
-			"AppCandycrush",
-			"AppEbay",
-			"AppFacebook",
-			"AppFiverr",
-			"AppFiverr2",
-			"AppGithub",
-			"AppGoogledocs",
-			"AppInstagram",
-			"AppMeditation",
-			"AppMicrosoft",
-			"AppMinecraft"
-		];
-		
 		flyingApp = Instantiate(Resources.Load("flyingAppPrefab")) as GameObject;
 		// Material flyingAppMaterial = flyingApp.GetComponent<Renderer>().AddComponent(typeof(Material)) as Material;
 		// Material flyingAppMaterial = flyingApp.GetComponent<Material>();
