@@ -42,7 +42,7 @@ public partial class PlayerMovement : MonoBehaviour
     {
         groundRenderer = GroundPlane.GetComponent<Renderer>();
 
-        GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Sprites/Strava");
+        //GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Sprites/Strava");
     }
 
     // Update is called once per frame
