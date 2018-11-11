@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33263091538556708}
   - component: {fileID: 23702020436509214}
   - component: {fileID: 135551034800328358}
-  - component: {fileID: 114781134927517496}
+  - component: {fileID: 114234942290154810}
   m_Layer: 0
   m_Name: FlyingAppPrefab
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892149544392726}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114781134927517496
+--- !u!114 &114234942290154810
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1892149544392726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d792845f3da924751895db5a975f4904, type: 3}
+  m_Script: {fileID: 11500000, guid: 84ca0fa1a43e1a64faadeddade4f35cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &135551034800328358
