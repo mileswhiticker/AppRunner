@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlyingAppController : MonoBehaviour {
 
@@ -9,6 +10,9 @@ public class FlyingAppController : MonoBehaviour {
 	public GameObject flyingApp;
 	public List<GameObject> flyingApps = new List<GameObject>();
 	public List<GameObject> flyingAppsToRemove = new List<GameObject>();
+	
+	public SpriteRenderer spriteRenderer;
+	public Sprite app1, app2;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +46,16 @@ public class FlyingAppController : MonoBehaviour {
 	void CreateApp()
     {
 		flyingApp = Instantiate(Resources.Load("flyingAppPrefab")) as GameObject;
+		// Material flyingAppMaterial = flyingApp.GetComponent<Renderer>().AddComponent(typeof(Material)) as Material;
+		// Material flyingAppMaterial = flyingApp.GetComponent<Material>();
+		
+		flyingApp.GetComponent<Renderer>().material.mainTexture = Resources.Load<Texture>("Sprites/Materials/AirBnB");
+		// flyingAppMaterial.mainTexture = Resources.Load<Texture>("Sprites/Strava");
+		
+		// flyingAppMaterial.SetTexture("_MainTex", app1Texture);
+		// flyingApp.AddComponent<SpriteRenderer>();
+		// spriteRenderer = flyingApp.GetComponent<SpriteRenderer>();
+		// spriteRenderer.sprite = app1;
 		flyingApp.transform.position = new Vector3(Random.Range(-9.0f, 9.0f), 0.85f, 7f);
         flyingApp.GetComponent<Renderer>().materials[0].SetTexture("_MainText", Resources.Load<Texture>("Sprites/testtexture"));
 
