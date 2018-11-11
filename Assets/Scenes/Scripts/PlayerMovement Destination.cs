@@ -4,6 +4,7 @@ using UnityEngine;
 
 public partial class PlayerMovement : MonoBehaviour
 {
+    public int metaDataLost = 0;
     public void ReachDestination(GameObject otherGameObject, Destination otherDestination)
     {
         AtDestination = true;
@@ -59,6 +60,11 @@ public partial class PlayerMovement : MonoBehaviour
             //
             HealthAmount += otherFlyingApp.HealthEffect;
             SleepAmount += otherFlyingApp.SleepEffect;
+
+            if (otherFlyingApp.LeakYourData)
+            {
+                metaDataLost += 1;
+            }
         }
     }
 }
