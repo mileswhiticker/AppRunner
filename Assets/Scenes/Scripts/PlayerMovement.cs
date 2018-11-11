@@ -33,7 +33,7 @@ public partial class PlayerMovement : MonoBehaviour {
     {
         //strafing
         float horizontalMovement = Input.GetAxis("Horizontal") * Time.deltaTime * strafeSpeed;
-
+        Debug.Log("horizontalMovement: " + horizontalMovement);
         //clamp the value
         if (this.transform.position.x <= -MaxStrafeWidth)
         {
@@ -47,7 +47,7 @@ public partial class PlayerMovement : MonoBehaviour {
         //set it
         this.transform.Translate(horizontalMovement, 0, 0);
 
-        //running forward
+        //Leave a destination
         if (AtDestination)
         {
             if(Input.GetAxis("Vertical") > 0)
@@ -65,6 +65,42 @@ public partial class PlayerMovement : MonoBehaviour {
         
         //track distance travelled
         DistanceTravelled += PlayerRunRate * Time.deltaTime;
+
+        // Increase of Decrease Speed
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            PlayerRunRate += 0.2f;
+            if (PlayerRunRate >= 2.0f) {
+                PlayerRunRate = 2.0f;
+            }
+
+            //// TODO clamp position
+            //float PositionZ = this.transform.position.z * Time.deltaTime;
+            //PositionZ += 0.2f;
+             
+            ////if (this.transform.position.z <= -6.0f) {
+            ////    Mathf.Clamp(PositionZ, -4.0f, -6.0f);
+            ////}             
+
+            //this.transform.Translate(0.0f, 0.0f, PositionZ);
+
+            //Debug.Log("Increasing: " + PlayerRunRate);
+            //Debug.Log("PositionZ" + PositionZ);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            PlayerRunRate -= 0.2f;
+            if (PlayerRunRate <= 0.5f) {
+                PlayerRunRate = 0.5f;
+            }
+
+            //// TODO clamp position
+            //float PositionZ = this.transform.position.z;
+            //PositionZ -= 0.2f;
+
+            //this.transform.Translate(0.0f, 0.0f, PositionZ);
+
+            //Debug.Log("Decreasing: " + PlayerRunRate);
+            //Debug.Log("PositionZ" + PositionZ);
+        }
 
         //cooldown from leaving a destination so extra collisions dont trigger
         if (timeLeftDestinationCooldown > 0)
