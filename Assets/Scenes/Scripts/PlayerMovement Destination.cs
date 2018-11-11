@@ -9,7 +9,7 @@ public partial class PlayerMovement : MonoBehaviour
         AtDestination = true;
         MaxStrafeWidth = MaxStrafeWidthDestination;
         PlayerRunRate = 0;
-        this.transform.position = otherGameObject.transform.position;
+        this.transform.position = new Vector3(otherGameObject.transform.position.x, this.transform.position.y, otherGameObject.transform.position.z);
     }
 
     public void LeaveDestination()
