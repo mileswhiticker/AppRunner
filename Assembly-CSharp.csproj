@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scenes\Scripts\FlyingApp.cs" />
     <Compile Include="Assets\Scenes\Scripts\FlyingAppController.cs" />
     <Compile Include="Assets\Scenes\Scripts\GroundMovement.cs" />
+    <Compile Include="Assets\Scenes\Scripts\Player UI.cs" />
     <Compile Include="Assets\Scenes\Scripts\PlayerMovement Destination.cs" />
     <Compile Include="Assets\Scenes\Scripts\PlayerMovement.cs" />
     <Reference Include="UnityEditor.StandardEvents">
