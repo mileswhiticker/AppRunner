@@ -10,8 +10,9 @@ public class FlyingAppController : MonoBehaviour {
 	public GameObject flyingApp;
 	public List<GameObject> flyingApps = new List<GameObject>();
 	public List<GameObject> flyingAppsToRemove = new List<GameObject>();
-	
-	public SpriteRenderer spriteRenderer;
+    public List<string> apps = new List<string>();
+
+    public SpriteRenderer spriteRenderer;
 	public Sprite app1, app2;
 
 	// Use this for initialization
@@ -19,7 +20,10 @@ public class FlyingAppController : MonoBehaviour {
 		pm = player.GetComponent<PlayerMovement>();
 		// Launch an app 1 seconds after starting, then every 3 seconds after that
 		InvokeRepeating("CreateApp", 1.0f, 3.0f);
-	}
+        apps.Add("AppAirbnb");
+        apps.Add("AppAirbnb2");
+        apps.Add("AppAmazon");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -45,7 +49,12 @@ public class FlyingAppController : MonoBehaviour {
 	// Spawn a new flying app and add it to the list
 	void CreateApp()
     {
-		flyingApp = Instantiate(Resources.Load("flyingAppPrefab")) as GameObject;
+        int index = (int)Mathf.Round(Random.value * (apps.Count - 1));
+        Debug.Log("index: " + index);
+
+        string chosenPrefab = apps[index];
+        Debug.Log("chosenPrefab: " + chosenPrefab);
+        flyingApp = Instantiate(Resources.Load(chosenPrefab)) as GameObject;
 		// Material flyingAppMaterial = flyingApp.GetComponent<Renderer>().AddComponent(typeof(Material)) as Material;
 		// Material flyingAppMaterial = flyingApp.GetComponent<Material>();
 		

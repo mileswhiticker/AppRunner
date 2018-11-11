@@ -10,6 +10,8 @@ public class FlyingApp : MonoBehaviour
     public float HappyEffect = 0.0f;
     public float MoneyEffect = 0.0f;
 
+    public bool LeakYourData = true;
+
     // Use this for initialization
     void Start () {
 	}
