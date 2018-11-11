@@ -65,6 +65,8 @@ public partial class PlayerMovement : MonoBehaviour
             {
                 metaDataLost += 1;
             }
+
+            otherGameObject.SetActive(false);
         }
     }
 }

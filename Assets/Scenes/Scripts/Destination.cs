@@ -23,5 +23,10 @@ public class Destination : MonoBehaviour
 	void Update()
     {
         this.transform.Translate(0, 0, -PlayerMovementScript.PlayerRunRate * Time.deltaTime);
+
+        if(this.transform.position.z < -1)
+        {
+            this.transform.Translate(0.0f, 0, 65.0f);
+        }
     }
 }

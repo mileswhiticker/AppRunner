@@ -62,12 +62,13 @@ public partial class PlayerMovement : MonoBehaviour
         }
 
         //set it
-        this.transform.Translate(horizontalMovement, 0, 0);
-
+        this.transform.Translate(-horizontalMovement, 0, 0);
+        
         //Leave a destination
+        float vertAxis = Input.GetAxis("Vertical");
         if (AtDestination)
         {
-            if(Input.GetAxis("Vertical") > 0)
+            if(vertAxis > 0)
             {
                 Debug.Log("LeaveDestination()");
                 LeaveDestination();
@@ -84,8 +85,8 @@ public partial class PlayerMovement : MonoBehaviour
         DistanceTravelled += PlayerRunRate * Time.deltaTime;
 
         // Increase of Decrease Speed
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            PlayerRunRate += 0.2f;
+        if (vertAxis != 0) {
+            PlayerRunRate += vertAxis * Time.deltaTime;
             if (PlayerRunRate >= 2.0f) {
                 PlayerRunRate = 2.0f;
             }
