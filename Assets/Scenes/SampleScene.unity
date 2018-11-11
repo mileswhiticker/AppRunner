@@ -303,6 +303,10 @@ MonoBehaviour:
   flyingApp: {fileID: 0}
   flyingApps: []
   flyingAppsToRemove: []
+  apps: []
+  spriteRenderer: {fileID: 0}
+  app1: {fileID: 0}
+  app2: {fileID: 0}
 --- !u!1 &302831616
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,13 +531,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.023574067, y: -0.010780574, z: -0.0003830231, w: 0.9996639}
-  m_LocalPosition: {x: -0.01, y: 0.9, z: -242}
+  m_LocalRotation: {x: -0.010774284, y: 0.06129193, z: 0.99806154, w: 0.00066165935}
+  m_LocalPosition: {x: -0, y: -1.24, z: -362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2082616035}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 2.7010002, y: -1.2370001, z: -0.07300001}
+  m_LocalEulerAnglesHint: {x: -7.0280004, y: -1.2370001, z: 180.00002}
 --- !u!1 &563404584
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +619,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 563404584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 0, z: 8.41}
+  m_LocalPosition: {x: 0.16, y: 0, z: 17.98}
   m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -632,6 +636,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04377a299cc039e478ec35565a44ae9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SleepEffect: 0
+  HealthEffect: 0
+  SocialEffect: 0
+  HappyEffect: 0
+  MoneyEffect: 100
   PlayerGameObject: {fileID: 2082616030}
 --- !u!54 &563404590
 Rigidbody:
@@ -867,7 +876,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1676735172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.42, y: 0, z: 9.09}
+  m_LocalPosition: {x: -0.2, y: 0, z: 64}
   m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -884,6 +893,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04377a299cc039e478ec35565a44ae9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SleepEffect: 100
+  HealthEffect: 100
+  SocialEffect: 0
+  HappyEffect: 0
+  MoneyEffect: 0
   PlayerGameObject: {fileID: 2082616030}
 --- !u!54 &1676735178
 Rigidbody:
@@ -1085,7 +1099,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: ced7ef6667e96734eb87aa07672bf506, type: 2}
+  - {fileID: 2100000, guid: ddfdb9563290044b097b2d4f00fa98cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1119,8 +1133,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1804495485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.22}
-  m_LocalScale: {x: 3, y: 2, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: 33.6}
+  m_LocalScale: {x: 1.56267, y: 2, z: 8.54955}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1292,7 +1306,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1927308504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.54, y: 0, z: 8.74}
+  m_LocalPosition: {x: 1.13, y: 0, z: 37.16}
   m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1309,6 +1323,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04377a299cc039e478ec35565a44ae9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SleepEffect: 0
+  HealthEffect: 0
+  SocialEffect: 100
+  HappyEffect: 100
+  MoneyEffect: 0
   PlayerGameObject: {fileID: 2082616030}
 --- !u!54 &1927308510
 Rigidbody:
@@ -1399,7 +1418,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: d66bcffc5a4b14a8983b831f16c86358, type: 2}
+  - {fileID: 2100000, guid: 89c3d6ccb27dc458f846aed599fa512c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1432,14 +1451,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2082616030}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -4.56}
-  m_LocalScale: {x: 1, y: 1, z: 0.01}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: 0, y: 0.84, z: -4.56}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0.01}
   m_Children:
   - {fileID: 534669905}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!114 &2082616036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,6 +1475,7 @@ MonoBehaviour:
   healthBar: {fileID: 650356932}
   sleepBar: {fileID: 1681500314}
   moneyBar: {fileID: 1157610354}
+  metaDataLost: 0
   GroundPlane: {fileID: 1804495485}
   strafeSpeed: 10
   grassScrollSpeed: 0.008

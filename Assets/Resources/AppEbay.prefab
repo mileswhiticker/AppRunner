@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33069477383327632}
   - component: {fileID: 23918201015535592}
   - component: {fileID: 65337300969226644}
+  - component: {fileID: 114081813208710086}
   m_Layer: 0
   m_Name: AppEbay
   m_TagString: Untagged
@@ -96,3 +97,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114081813208710086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033111079690640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ca0fa1a43e1a64faadeddade4f35cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SleepEffect: 0
+  HealthEffect: 10
+  SocialEffect: 0
+  HappyEffect: 0
+  MoneyEffect: -10
+  LeakYourData: 1
